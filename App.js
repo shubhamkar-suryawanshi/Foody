@@ -1,5 +1,5 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import ReactDOM from 'react-dom/client';
 import Body from './src/Components/Body';
 import Footer from './src/Components/Footer';
 import Header from './src/Components/Header';
