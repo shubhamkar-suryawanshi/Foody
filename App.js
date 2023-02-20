@@ -1,11 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import Body from './src/Components/Body';
+import Footer from './src/Components/Footer';
+import Header from './src/Components/Header';
 
 const App = () => {
   return (
     <React.Fragment>
-      <h1>Woow 😍</h1>
-      <h2>This create react app is build by me 😎</h2>
+      <Header />
+      <Body />
+      <Footer />
     </React.Fragment>
   );
 };
