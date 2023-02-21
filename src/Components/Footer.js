@@ -2,7 +2,10 @@ const Footer = () => {
   return (
     <div>
       <hr />
-      <small>@C This is a app Footer</small>
+      <div className="flex justify-between p-5 shadow-xl">
+        <small>This is not copyrited</small>
+        <small>Fell free to copy.</small>
+      </div>
     </div>
   );
 };
