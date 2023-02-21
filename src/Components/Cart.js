@@ -7,8 +7,8 @@ const Cart = () => {
 
   return (
     <div className="">
-      <h1 className="font-bold text-3xl shadow-lg p-2 m-2 bg-lime-50">
-        Cart Items - {cartItems.length}
+      <h1 className="py-2 m-2 font-bold text-gray-700 text-2xl ">
+        Your Menu - {cartItems.length}
       </h1>
       {cartItems.map((item) => (
         <FoodItem key={item.id} {...item} />

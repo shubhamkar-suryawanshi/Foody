@@ -12,34 +12,36 @@ const Restaurant = () => {
 
   const dispatch = useDispatch();
 
-  // not render anything(early return)
   if (!restaurant) return null;
 
   return !restaurant ? (
     <Shimmer />
   ) : (
-    <div className="p-3 m-2 flex flex-1 justify-start">
-      <div className="w-72 p-5 m-5">
-        <img src={IMG_CDN_URL + restaurant.cloudinaryImageId} />
-        <h1>Restaurant Name: {restaurant.name}</h1>
-        <h1>Rating: {restaurant.avgRating}</h1>
-        <h2>ID: {restaurant.id}</h2>
+    <div className="p-3 m-2 flex  justify-start">
+      <div className="w-72 p-5 m-5 flex-1">
+        <img
+          className="border shadow-gray-400 p-5"
+          src={IMG_CDN_URL + restaurant.cloudinaryImageId}
+        />
+        <h1 className="py-5 font-bold text-gray-700 text-2xl">
+          Restaurant Name: {restaurant.name}
+        </h1>
+        <h1 className="font-medium text-gray-600 text-lg">
+          Rating: {restaurant.avgRating}
+        </h1>
       </div>
-      {/*  <button
-        onClick={() => {
-          dispatch(addItem('Bhajji'));
-        }}
-      >
-        Add Item
-      </button>*/}
 
-      <div>
-        <h1 className="font-bold text-2xl">Menu</h1>
+      <div className="flex-1">
+        <h1 className="py-5 font-bold text-gray-700 text-2xl">Menu List</h1>
         <ul>
           {Object.values(menus).map((item) => (
-            <li key={item.id} className="flex">
-              {item.name} -
+            <li
+              key={item.id}
+              className="py-2 font-medium text-gray-600 text-lg"
+            >
+              {item.name + '  '}-
               <button
+                className="border ml-5 shadow-md py-1 px-2 cursor-pointer border-gray-300 rounded-2xl"
                 key={item.id}
                 onClick={() => {
                   dispatch(addItem(item));
