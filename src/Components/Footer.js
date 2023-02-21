@@ -1,8 +1,8 @@
 const Footer = () => {
   return (
     <div>
-      <small>This is not copyrited</small>
-      <small>Fell free to copy.</small>
+      <hr />
+      <small>@C This is a app Footer</small>
     </div>
   );
 };

@@ -4,6 +4,7 @@ const useOnline = () => {
   const [isOnline, setIsOnline] = useState(true);
 
   useEffect(() => {
+    // add callback function inside useEffect only
     const handleOnline = () => {
       setIsOnline(true);
     };

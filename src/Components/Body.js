@@ -15,6 +15,10 @@ const Body = () => {
 
   if (!list) return null;
 
+  // If nothing is matching after filter?
+  // if (filteredList.length === 0)
+  //   return <h1>Sorry, Your Favorite Restaurant not found</h1>;
+
   const isOnline = useOnline();
 
   if (!isOnline) {
@@ -40,7 +44,11 @@ const Body = () => {
       >
         Search
       </button>
-
+      {/*<div className="body">
+        {filteredList.map((r) => (
+          <RestaurantCard key={r.data.id} {...r.data} />
+        ))}
+        </div>*/}
       <div className="flex flex-wrap justify-around">
         {filteredList.map((r) => {
           return (

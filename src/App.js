@@ -1,19 +1,30 @@
-import React from 'react';
+import React, { lazy, Suspense } from 'react';
 import ReactDOM from 'react-dom/client';
 import { createBrowserRouter, Outlet, RouterProvider } from 'react-router-dom';
 
 import Header from './components/Header';
 import Body from './components/Body';
 import Footer from './components/Footer';
+import Contact from './components/Contact';
 import Error from './components/Error';
+import Restaurant from './components/Restaurant';
+import Shimmer from './components/Shimmer';
+
+import { Provider } from 'react-redux';
+import store from './shared/store';
+import Cart from './components/Cart';
+
+const About = lazy(() => {
+  return import('./components/About');
+});
 
 const AppLayout = () => {
   return (
-    <div>
+    <Provider store={store}>
       <Header />
       <Outlet />
       <Footer />
-    </div>
+    </Provider>
   );
 };
 
@@ -26,6 +37,27 @@ const appRouter = createBrowserRouter([
       {
         path: '/',
         element: <Body />,
+      },
+      {
+        path: '/about',
+        element: (
+          <Suspense fallback={<Shimmer />}>
+            <About />
+          </Suspense>
+        ),
+      },
+      {
+        path: '/contact',
+        element: <Contact />,
+      },
+
+      {
+        path: '/restaurant/:resId',
+        element: <Restaurant />,
+      },
+      {
+        path: '/cart',
+        element: <Cart />,
       },
     ],
   },
