@@ -1,5 +1,5 @@
 import { Component } from 'react';
-import MyContext from '../shared/MyContext';
+import MyContext from '../Shared/MyContext';
 
 class About extends Component {
   constructor() {

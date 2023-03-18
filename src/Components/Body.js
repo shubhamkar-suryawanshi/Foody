@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import RestaurantCard from './RestaurantCard';
 import Shimmer from './Shimmer';
 
-import { filterData } from '../shared/helper';
+import { filterData } from '../Shared/helper';
 import useOnline from '../Hooks/useOnline';
 import Pegination from './Pegination';
 

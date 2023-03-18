@@ -3,7 +3,7 @@ import { IMG_CDN_URL } from '../constants';
 import useRestaurant from '../Hooks/useRestaurant';
 import Shimmer from './Shimmer';
 import { useDispatch } from 'react-redux';
-import { addItem } from '../shared/cartSlice';
+import { addItem } from '../Shared/cartSlice';
 
 const Restaurant = () => {
   const { resId } = useParams();
