@@ -6,11 +6,14 @@ import Shimmer from './Shimmer';
 
 import { filterData } from '../shared/helper';
 import useOnline from '../Hooks/useOnline';
+import Pegination from './Pegination';
 
 const Body = () => {
   const [query, setQuery] = useState('');
   const [list, setList] = useState([]);
   const [filteredList, setFilteredList] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [cardsPerPage, setCardsPerPage] = useState(5);
 
   useEffect(() => {
     getRestaurants();
@@ -34,6 +37,10 @@ const Body = () => {
     return <h1>Oops! You are Offline</h1>;
   }
 
+  const lastCardIndex = currentPage * cardsPerPage;
+  const firstCardIndex = lastCardIndex - cardsPerPage;
+  const currentCards = list.slice(firstCardIndex, lastCardIndex);
+
   return list.length === 0 ? (
     <Shimmer />
   ) : (
@@ -48,7 +55,7 @@ const Body = () => {
       />
 
       <div className="flex flex-wrap justify-around box-border">
-        {list
+        {currentCards
           .filter((restos) =>
             restos.data.name.toLowerCase().includes(query.toLowerCase())
           )
@@ -60,6 +67,11 @@ const Body = () => {
             );
           })}
       </div>
+      <Pegination
+        totalCards={list.length}
+        cardsPerPage={cardsPerPage}
+        setCurrentPage={setCurrentPage}
+      />
     </div>
   );
 };
