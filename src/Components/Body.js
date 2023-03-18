@@ -8,7 +8,7 @@ import { filterData } from '../shared/helper';
 import useOnline from '../Hooks/useOnline';
 
 const Body = () => {
-  const [inputValue, setInputValue] = useState('');
+  const [query, setQuery] = useState('');
   const [list, setList] = useState([]);
   const [filteredList, setFilteredList] = useState([]);
 
@@ -37,33 +37,30 @@ const Body = () => {
   return list.length === 0 ? (
     <Shimmer />
   ) : (
-    <React.Fragment>
+    <div className="box-border">
       <input
-        className="py-1 px-5  ml-3 my-3  border border-gray-400 active:border-gray-400 rounded-l-full"
+        className="py-1 px-5  m-5  w-1/3  border border-gray-400 active:border-gray-400 rounded-full "
         onChange={(e) => {
-          setInputValue(e.target.value);
+          setQuery(e.target.value);
         }}
-        value={inputValue}
+        value={query}
+        placeholder="Search Your Favorite Restaurant Here 😍"
       />
-      <button
-        className="p-1 rounded-r-full border border-gray-400 pr-2 bg-gray-400"
-        onClick={() => {
-          setFilteredList(filterData(inputValue, list));
-        }}
-      >
-        Search
-      </button>
 
-      <div className="flex flex-wrap justify-around">
-        {filteredList.map((r) => {
-          return (
-            <Link to={'/restaurant/' + r.data.id} key={r.data.id}>
-              <RestaurantCard {...r.data} />
-            </Link>
-          );
-        })}
+      <div className="flex flex-wrap justify-around box-border">
+        {list
+          .filter((restos) =>
+            restos.data.name.toLowerCase().includes(query.toLowerCase())
+          )
+          .map((r) => {
+            return (
+              <Link to={'/restaurant/' + r.data.id} key={r.data.id}>
+                <RestaurantCard {...r.data} />
+              </Link>
+            );
+          })}
       </div>
-    </React.Fragment>
+    </div>
   );
 };
 
