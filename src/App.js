@@ -11,7 +11,7 @@ import Restaurant from './Components/Restaurant';
 import Shimmer from './Components/Shimmer';
 
 import { Provider } from 'react-redux';
-import store from './Shared/store';
+import store from './shared/store';
 import Cart from './Components/Cart';
 
 const About = lazy(() => {
