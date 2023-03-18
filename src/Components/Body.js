@@ -1,17 +1,30 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
 import RestaurantCard from './RestaurantCard';
 import Shimmer from './Shimmer';
 
 import { filterData } from '../shared/helper';
-import useList from '../Hooks/useList';
 import useOnline from '../Hooks/useOnline';
 
 const Body = () => {
   const [inputValue, setInputValue] = useState('');
+  const [list, setList] = useState([]);
+  const [filteredList, setFilteredList] = useState([]);
 
-  const { list, filteredList } = useList();
+  useEffect(() => {
+    getRestaurants();
+  }, []);
+
+  async function getRestaurants() {
+    const data = await fetch(
+      'https://www.swiggy.com/dapi/restaurants/list/v5?lat=16.696534&lng=74.2421107&page_type=DESKTOP_WEB_LISTING'
+    );
+    const json = await data.json();
+    // console.log(json);
+    setList(json.data.cards[2].data.data.cards);
+    setFilteredList(json.data.cards[2].data.data.cards);
+  }
 
   if (!list) return null;
 
