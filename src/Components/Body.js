@@ -37,9 +37,9 @@ const Body = () => {
     return <h1>Oops! You are Offline</h1>;
   }
 
-  const lastCardIndex = currentPage * cardsPerPage;
-  const firstCardIndex = lastCardIndex - cardsPerPage;
-  const currentCards = list.slice(firstCardIndex, lastCardIndex);
+  // const lastCardIndex = currentPage * cardsPerPage;
+  // const firstCardIndex = lastCardIndex - cardsPerPage;
+  // const currentCards = list.slice(firstCardIndex, lastCardIndex);
 
   return list.length === 0 ? (
     <Shimmer />
@@ -55,7 +55,8 @@ const Body = () => {
       />
 
       <div className="flex flex-wrap justify-around box-border">
-        {currentCards
+        {/**{currentCards */}
+        {list
           .filter((restos) =>
             restos.data.name.toLowerCase().includes(query.toLowerCase())
           )
@@ -67,11 +68,11 @@ const Body = () => {
             );
           })}
       </div>
-      <Pegination
+      {/**   <Pegination
         totalCards={list.length}
         cardsPerPage={cardsPerPage}
         setCurrentPage={setCurrentPage}
-      />
+      />*/}
     </div>
   );
 };
