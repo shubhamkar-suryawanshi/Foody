@@ -1,37 +1,28 @@
 import { Link } from 'react-router-dom';
-import { useSelector } from 'react-redux';
-
-import logo from '../assets/logo.png';
-
+import logo from '../utils/logo.png';
 const Header = () => {
-  const cartItems = useSelector((store) => store.cart.items);
-
   return (
-    <div className="flex justify-between items-center px-5 py-2 shadow-xl">
-      <img className="w-36 cursor-pointer" alt="logo" src={logo} />
-      <ul className="flex">
-        <Link to={'/'}>
-          <li className="p-2 m-2 font-bold text-gray-500 cursor-pointer hover:text-orange-500">
-            Home
-          </li>
+    <header className="flex items-center justify-between p-4 shadow-2xl font-bold">
+      <div>
+        <Link to="/">
+          <img src={logo} alt="Logo" className="w-28 shadow-xl rounded-full" />
         </Link>
-        <Link to={'/about'}>
-          <li className="p-2 m-2 font-bold text-gray-500 cursor-pointer hover:text-orange-500">
-            About
-          </li>
-        </Link>
-        <Link to={'/contact'}>
-          <li className="p-2 m-2 font-bold text-gray-500 cursor-pointer hover:text-orange-500">
-            Contact
-          </li>
-        </Link>
-      </ul>
-      <Link to={'/cart'}>
-        <h1 className="p-2 m-2 font-bold text-gray-500 cursor-pointer hover:text-orange-500">
-          {cartItems.length} Cart
-        </h1>
-      </Link>
-    </div>
+      </div>
+      <nav>
+        <ul className="flex justify-between gap-8 items-center ">
+          <Link to="/">
+            <li className="hover:text-orange-600">Home</li>
+          </Link>
+          <Link to="/about">
+            <li className="hover:text-orange-600">About</li>
+          </Link>
+          <Link to="/contact">
+            <li className="hover:text-orange-600">Contact</li>
+          </Link>
+        </ul>
+      </nav>
+      <div className="flex items-center">Cart</div>
+    </header>
   );
 };
 

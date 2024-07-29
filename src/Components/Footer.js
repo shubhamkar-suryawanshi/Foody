@@ -1,11 +1,10 @@
 const Footer = () => {
   return (
-    <div>
+    <div className="flex flex-col justify-center gap-5 mb-5">
       <hr />
-      <div className="flex justify-between p-5">
-        <small>This is not copyrighted</small>
-        <small>Feel free to copy.</small>
-      </div>
+      <small className="m-auto">
+        This is the dummy project. Feel free to copy it
+      </small>
     </div>
   );
 };

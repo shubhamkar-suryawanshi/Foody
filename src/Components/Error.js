@@ -1,17 +1,16 @@
 import { useRouteError } from 'react-router-dom';
 
-const Error = () => {
+function Error() {
   const err = useRouteError();
-  // console.log(err);
   return (
-    <div>
-      <h1>Oops!!!</h1>
-      <h1>Someting went wrong</h1>
-      <h3>
+    <div className="p-10">
+      This is error page. You able to see it as you were navigating to wrong
+      path or we are having network issue.
+      <p className="font-bold text-red-600">
         Status = {err.status} - {err.data}
-      </h3>
+      </p>
     </div>
   );
-};
+}
 
 export default Error;
