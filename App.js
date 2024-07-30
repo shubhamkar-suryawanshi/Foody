@@ -9,6 +9,7 @@ import Footer from './src/components/Footer';
 import Error from './src/components/Error';
 import About from './src/components/About';
 import Contact from './src/components/Contact';
+import MenuList from './src/components/MenuList';
 
 const App = () => {
   return (
@@ -29,6 +30,7 @@ const appRouter = createBrowserRouter([
       { path: '/', element: <Body /> },
       { path: '/about', element: <About /> },
       { path: '/contact', element: <Contact /> },
+      { path: '/menu/:resID', element: <MenuList /> },
     ],
   },
 ]);
