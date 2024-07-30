@@ -1,6 +1,9 @@
 import { Link } from 'react-router-dom';
 import logo from '../utils/logo.png';
+import { useSelector } from 'react-redux';
+
 const Header = () => {
+  const cartItems = useSelector((store) => store.cart.items);
   return (
     <header className="flex items-center justify-between p-4 shadow-2xl font-bold">
       <div>
@@ -21,7 +24,7 @@ const Header = () => {
           </Link>
         </ul>
       </nav>
-      <div className="flex items-center">Cart</div>
+      <div className="flex items-center">Cart - {cartItems.length}</div>
     </header>
   );
 };

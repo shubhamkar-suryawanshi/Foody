@@ -2,6 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 
 import { createBrowserRouter, Outlet, RouterProvider } from 'react-router-dom';
+import { Provider } from 'react-redux';
+import store from './src/utils/store';
 
 import Header from './src/components/Header';
 import Body from './src/components/Body';
@@ -14,9 +16,11 @@ import MenuList from './src/components/MenuList';
 const App = () => {
   return (
     <div className="flex flex-col gap-8">
-      <Header />
-      <Outlet />
-      <Footer />
+      <Provider store={store}>
+        <Header />
+        <Outlet />
+        <Footer />
+      </Provider>
     </div>
   );
 };

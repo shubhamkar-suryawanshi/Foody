@@ -1,10 +1,14 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { REST_LOGO_LINK } from '../utils/constants';
+import { useDispatch } from 'react-redux';
+import { addItem } from '../utils/cartSlice';
 
 function MenuList() {
   const [menuList, setMenuList] = useState([]);
   const { resID } = useParams();
+  const dispatch = useDispatch();
+
   useEffect(() => {
     getMenuData();
   }, []);
@@ -17,27 +21,28 @@ function MenuList() {
       json?.data?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2]?.card
         ?.card?.itemCards
     );
-    console.log(
-      json?.data?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2]?.card
-        ?.card?.itemCards
-    );
+    // console.log(
+    //   json?.data?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2]?.card
+    //     ?.card?.itemCards
+    // );
   };
+
   return (
     <section className="restaurant-list flex gap-6 flex-wrap align-middle">
       {menuList.map((menu) => {
         return (
           <div
-            className="w-1/2 m-auto shadow-xl flex gap-3 rounded-3xl"
+            className="w-1/2 mx-auto shadow-xl flex gap-3 rounded-3xl "
             key={menu?.card?.info?.id}
           >
             <div className="flex justify-center w-1/4">
               <img
                 src={REST_LOGO_LINK + menu?.card?.info?.imageId}
                 alt="restaurant-logo"
-                className="shadow-md size-full h-34 w-full rounded-3xl"
+                className="shadow-md h-36 w-full rounded-3xl"
               />
             </div>
-            <div className="flex flex-col gap-0.75 p-3 w-3/4">
+            <div className="flex flex-col gap-0.5 p-2 w-3/4">
               <h3 className="h-6 overflow-hidden font-semibold ">
                 {menu?.card?.info?.name}
               </h3>
@@ -53,7 +58,12 @@ function MenuList() {
               <p className="h-6 overflow-hidden italic">
                 {menu?.card?.info?.description}
               </p>
-              <button className="w-20 mt-2 p-2 shadow-lg rounded-full border border-transparent hover:border-green-500">
+              <button
+                className="w-20 mt-2 p-2 shadow-lg rounded-full border border-transparent hover:border-green-500"
+                onClick={() => {
+                  dispatch(addItem(menu?.card?.info));
+                }}
+              >
                 Add ➕
               </button>
             </div>
